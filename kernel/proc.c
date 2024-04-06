@@ -79,6 +79,7 @@ mycpu(void)
 }
 
 // Return the current struct proc *, or zero if none.
+
 struct proc*
 myproc(void)
 {
@@ -295,6 +296,7 @@ fork(void)
     return -1;
   }
   np->sz = p->sz;
+  np->trace_syscall_mask =  p->trace_syscall_mask;
 
   // copy saved user registers.
   *(np->trapframe) = *(p->trapframe);

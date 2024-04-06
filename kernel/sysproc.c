@@ -71,6 +71,18 @@ sys_sleep(void)
 }
 
 uint64
+sys_trace(void)
+{
+  int trace_syscall_mask;
+  uint ticks0;
+
+  argint(0, &trace_syscall_mask);
+  struct proc cur_proc = myproc();
+  cur_proc->trace_syscall_mask |=  trace_syscall_mask;
+  
+}
+
+uint64
 sys_kill(void)
 {
   int pid;
